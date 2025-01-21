@@ -17,3 +17,6 @@ Thumbs.db
 
 # Ignore pytest cache
 .pytest_cache/
+
+# Ignore local regenerate file
+src/regenerate
