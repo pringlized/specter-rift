@@ -1,0 +1,6 @@
+# src_arith_assign_parens.grit
+# Basic arithmetic and variable assignment
+x = 3 + 2 * (5 - 1)
+y = x / 2 - 1
+print(x)
+print(y)
