@@ -1,6 +1,8 @@
 # specter-rift
 **It will reveal itself when you are worthy...**
 
+**NOTE**: Rift used to be named Grit.  I changed the name for narative purposes.  The file code doesn't reflect the name change yet so, if tried to build the project it will fail current even though it does work with simplae maths.
+
 **Specter-Rift** is a fictional in-game programming language designed for advanced players to build their own hacking tools in a dystopian game world. This language is used on the **ghOSt** operating system, where elite players can dive deep into hacking and code manipulation. 
 
 Do you have what it takes to hack your way through the game's layers? Can you master **Rift** and use it to break through the virtual barriers of the ghOSt OS? Only the truly worthy will unlock its secrets.
