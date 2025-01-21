@@ -14,3 +14,6 @@ env/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+# Ignore pytest cache
+.pytest_cache/
