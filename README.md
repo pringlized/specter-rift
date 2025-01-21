@@ -1,7 +1,3 @@
-Sure! Here's the updated README with a sarcastic twist for the "How to Use" section, and without the "Contributing" and "Contact" sections:
-
----
-
 # specter-rift
 **It will reveal itself when you are worthy...**
 
