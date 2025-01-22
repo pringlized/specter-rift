@@ -1,4 +1,4 @@
-grammar Grit;
+grammar Rift;
 
 // Lexer rules
 IF         : 'if' ;
@@ -32,41 +32,46 @@ COMMENT    : '#' ~[\r\n]* -> skip ;  // Skip anything after `#` until end of lin
 MISMATCH   : . ;
 
 // Parser rules
-program    : statement* EOF ; // Updated to handle multiple statements
+program    : statement* EOF ; // Start the program with any number of statements
 
 statement
     : ifStatement
     | whileStatement
     | assignment
-    | expr NEWLINE?
+    | expr NEWLINE? // Any expression followed by an optional newline
     ;
 
 ifStatement
-    : IF expr COLON NEWLINE program (ELIF expr COLON NEWLINE program)* (ELSE COLON NEWLINE program)?
-    ;
+    : IF expr COLON NEWLINE program (ELIF expr COLON NEWLINE program)* (ELSE COLON NEWLINE program)? 
+    ; // Conditional block with optional elif/else branches
 
 whileStatement
-    : WHILE expr COLON NEWLINE program
-    ;
+    : WHILE expr COLON NEWLINE program 
+    ; // While loop with expression as condition
 
 assignment
-    : IDENTIFIER ASSIGN expr NEWLINE?
-    | IDENTIFIER PLUS_ASSIGN expr NEWLINE?
-    | IDENTIFIER MINUS_ASSIGN expr NEWLINE?
+    : IDENTIFIER ASSIGN expr NEWLINE? // Variable assignment
+    | IDENTIFIER PLUS_ASSIGN expr NEWLINE? // Increment assignment
+    | IDENTIFIER MINUS_ASSIGN expr NEWLINE? // Decrement assignment
     ;
 
 expr
-    : term (op=('<' | '>' | '<=' | '>=' | '!=' | '==') term)*
-    | additiveExpr
+    : term (op=('<' | '>' | '<=' | '>=' | '!=' | '==') term)* // Comparisons
+    | additiveExpr // Expression with addition/subtraction
+    | lazyExpr // Added lazy expression for lazy evaluation
     ;
+
+lazyExpr
+    : 'lazy' LPAREN expr RPAREN // Defining lazy expressions for deferred evaluation
+    ; 
 
 additiveExpr
-    : term (op=('+' | '-') term)*
-    ;
+    : term (op=('+' | '-') term)* 
+    ; // Expression with addition or subtraction
 
 term
-    : factor (op=('*' | '/') factor)*
-    ;
+    : factor (op=('*' | '/') factor)* 
+    ; // Expression with multiplication or division
 
 factor
     : IDENTIFIER
@@ -75,4 +80,4 @@ factor
     | BOOL
     | NONE
     | LPAREN expr RPAREN
-    ;
+    ; // Basic data types and parenthesis-wrapped expressions
